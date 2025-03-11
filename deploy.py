@@ -4,14 +4,19 @@ from sklearn.preprocessing import StandardScaler
 import joblib as joblib
 import os
 
-model = joblib.load('svaed_model.pkl')
-scaler = joblib.load('scaler.save')
+
+# loading the model 
+model = joblib.load('saved_model.pkl')
+#scaler = joblib.load('scaler.save')
 
 app = Flask(__name__)
 
 IMG_FOLDER = os.path.join('static', 'IMG')
 app.config['UPLOAD_FOLDER'] =IMG_FOLDER
 
+# app.route is used route the index file. 
+# Basically when we are loading in our local server,
+# it will be using this index.html file to host it.
 @app.route('/')
 def index():
     return render_template('index.html')
